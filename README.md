@@ -3,7 +3,7 @@
 A JavaScript library for converting Markdown to [Typst](https://typst.app/) code.
 
 ## Try it online (PENDING!!!)
-See an example use case in this demo website: [https://markdown2typst.vercel.app](https://markdown2typst.vercel.app).
+See an example use case in this demo website: [https://Mapaor.github.io/markdown2typst](https://Mapaor.github.io/markdown2typst).
 
 ## Supported Markdown features
 ### GitHub Flavored Markdown (GFM)
@@ -100,7 +100,7 @@ Note: any non-standard key is simply ignored, all keys are optional. The front-m
 ### NPM package (for Node.js projects)
 Package link:
 
-[](https://www.npmjs.com/package/markdown2typst)
+[https://www.npmjs.com/package/markdown2typst](https://www.npmjs.com/package/markdown2typst)
 
 Install it:
 
@@ -141,28 +141,59 @@ A javascript bundle will appear in the `dist` folder. Make the desired changes t
 npm run test
 ```
 
+## Simple Usage
 
-## Usage
+#### Using the package
 
-### Simple usage
-
-#### Using the bundle
-
-##### In Node.js (ESM) - Locally
+##### Simplest example
 ```javascript
-import { markdown2typst } from './dist/markdown2typst.min.js';
+import { markdown2typst } from 'markdown2typst';
 
 const markdown = '# Hello Typst\n\nThis is a **test**.';
 const typst = markdown2typst(markdown);
 console.log(typst);
 ```
 
-##### In the browser - Locally
+##### Converting a Markdown file
+```js
+import { markdown2typst } from 'markdown2typst';
+import { readFileSync } from 'fs';
+
+const markdown = readFileSync('./example-file.md', 'utf-8');
+const typst = markdown2typst(markdown);
+console.log(typst);
+```
+
+#### Using the bundle - Locally
+
+Suppose you've downloaded the JS bundle and saved it in a `assets` folder, now for using it in your website you would simply do:
+
+##### In Node.js (ESM)
+```javascript
+import { markdown2typst } from './assets/markdown2typst.min.js';
+
+const markdown = '# Hello Typst\n\nThis is a **test**.';
+const typst = markdown2typst(markdown);
+console.log(typst);
+```
+
+##### In the browser
 ```html
 <script type="module">
-  import { markdown2typst } from './dist/markdown2typst.min.js';
+  import { markdown2typst } from './assets/markdown2typst.min.js';
   
   const markdown = '# Hello Typst';
+  const typst = markdown2typst(markdown);
+  console.log(typst);
+</script>
+```
+
+#### Using the bundle - Via CDN
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/markdown2typst@latest/dist/markdown2typst.min.js"></script>
+<script>
+  const markdown = '# Hello Typst\n\nThis is a **test**.';
   const typst = markdown2typst(markdown);
   console.log(typst);
 </script>
