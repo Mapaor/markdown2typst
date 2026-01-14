@@ -35,4 +35,4 @@ node examples/02-features/convert-feature.js <filename.md>
 
 Available: `math.md`, `tables.md`, `code-blocks.md`, `footnotes.md`, `frontmatter.md`, `links-images.md`
 
-Each subdirectory has its own README with details.
+The features subdirectory has its own README with details.

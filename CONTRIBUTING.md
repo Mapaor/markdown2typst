@@ -2,10 +2,6 @@
 
 Thank you for considering contributing to markdown2typst! This document provides guidelines for contributing to the project.
 
-## Code of Conduct
-
-Be respectful, constructive, and professional in all interactions.
-
 ## How Can I Contribute?
 
 ### Reporting Bugs
@@ -40,6 +36,9 @@ npm run typecheck
 
 # Or...
 npx tsc --noEmit
+
+# And test
+npm run test
 ```
 
 ## Guidelines
@@ -52,7 +51,7 @@ npx tsc --noEmit
 - Use meaningful variable and function names
 - Provide usage examples if you add a new feature
 
-#### Example:
+#### Example JSDoc comments:
 
 ```typescript
 /**
@@ -74,18 +73,18 @@ export function markdown2typst(markdown: string, options?: Options): string {
 
 ### Testing guidelines
 When adding new features:
-
-  - Test with various Markdown inputs
-  - Verify Typst output is syntactically correct
+  - Ensure all tests pass (`npm run test`)
+  - Test with various Markdown inputs related to your new feature
+  - Verify Typst output is syntactically correct and can compile in the [Typst.app](https://typst.app)
   -  Check edge cases (empty strings, special characters, etc.)
 
 ### Documentation guidelines
-If you add a new features or make important changes to the code
+If you add a new features or make important changes to the code please document them as well
 
-1. Update the main README.md documenting it
+1. Update the main README.md if needed
 2. If possible add examples to the `examples/` directory
 
 ## Questions?
 
-Feel free to open an issue with your question or reach out to pardo.marti@gmail.com.
+Feel free to open an issue with your question or reach out at pardo.marti@gmail.com.
 

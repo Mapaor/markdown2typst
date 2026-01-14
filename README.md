@@ -99,7 +99,8 @@ Note: any non-standard key is simply ignored, all keys are optional. The front-m
 
 ### NPM package (for Node.js projects)
 Package link:
-![](https://www.npmjs.com/package/markdown2typst)
+
+[](https://www.npmjs.com/package/markdown2typst)
 
 Install it:
 
@@ -108,8 +109,6 @@ npm install tex2typst
 ```
 
 ### JS Bundle
-
-Available both on JSDeliver and Unpkg.
 
 #### JSDelivr
 
@@ -132,13 +131,16 @@ cd markdown2typst
 
 # Install dependencies
 npm install
-```
-Make the desired changes to the library (`markdown2typst.ts` file) and then build from source
-```bash
+
 # Build the bundle
 npm run build
 ```
-The updated javascript bundle will appear in the `dist` folder.
+A javascript bundle will appear in the `dist` folder. Make the desired changes to the library and then build again if you need. To test your modifications still comply with what's expected from the library run the tests.
+```bash
+# Testing
+npm run test
+```
+
 
 ## Usage
 
