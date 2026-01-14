@@ -1,5 +1,6 @@
 name: Deploy demo
 
+# When someone modifies files inside the `demo` directory
 on:
   push:
     branches:
@@ -20,6 +21,6 @@ jobs:
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: demo
+          path: demo # Publish to GH Pages using the `demo` folder
 
       - uses: actions/deploy-pages@v4
