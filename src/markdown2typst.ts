@@ -94,3 +94,6 @@ export function markdown2typst(markdown: string, options: Markdown2TypstOptions 
 		throw error;
 	}
 }
+
+// Export as default for convenience (allows: import markdown2typst from 'markdown2typst')
+export default markdown2typst;
