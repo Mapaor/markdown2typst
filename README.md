@@ -97,7 +97,11 @@ Note: any non-standard key is simply ignored, all keys are optional. The front-m
 
 ## Installation
 
-### NPM package (for Node.js projects) -- PENDING!!!
+### NPM package (for Node.js projects)
+Package link:
+![](https://www.npmjs.com/package/markdown2typst)
+
+Install it:
 
 ```bash
 npm install tex2typst
