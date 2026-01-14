@@ -2,7 +2,7 @@
 
 A JavaScript library for converting Markdown to [Typst](https://typst.app/) code.
 
-## Try it online (PENDING!!!)
+## Try it online
 See an example use case in this demo website: [https://Mapaor.github.io/markdown2typst](https://Mapaor.github.io/markdown2typst).
 
 ## Supported Markdown features
@@ -199,6 +199,16 @@ console.log(typst);
 </script>
 ```
 
+#### Or in a javascript file
+```js
+import markdown2typst from 'https://cdn.jsdelivr.net/npm/markdown2typst@latest/dist/markdown2typst.min.js';
+
+const markdown = '# Hello Typst\n\nThis is a **test**.';
+const typst = markdown2typst(markdown);
+console.log(typst);
+```
+
+Which is what the [demo](./demo/) uses.
 ## Examples
 
 See the [Examples](/examples/README.md) page for basic and advanced examples on how to use the library and all the features it supports.
