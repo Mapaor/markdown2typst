@@ -2,7 +2,7 @@
 
 A JavaScript library for converting Markdown to [Typst](https://typst.app/) code.
 
-## Try it online
+## Try it online (PENDING!!!)
 See an example use case in this demo website: [https://markdown2typst.vercel.app](https://markdown2typst.vercel.app).
 
 ## Supported Markdown features
@@ -97,13 +97,13 @@ Note: any non-standard key is simply ignored, all keys are optional. The front-m
 
 ## Installation
 
-### NPM package (for Node.js projects)
+### NPM package (for Node.js projects) -- PENDING!!!
 
 ```bash
 npm install tex2typst
 ```
 
-### JS Bundle
+### JS Bundle -- PENDING!!!
 
 Available both on JSDeliver and Unpkg.
 
