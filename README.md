@@ -168,30 +168,9 @@ console.log(typst);
 </script>
 ```
 
+## Examples
 
-#### Using the library - Locally
-
-```typescript
-import { markdown2typst } from './src/markdown2typst';
-
-const markdown = `
-# My Document
-
-This is a paragraph with **bold** and *italic* text.
-
-## Features
-
-- Item 1
-- Item 2
-`;
-
-const typst = markdown2typst(markdown);
-console.log(typst);
-```
-
-### Advanced usage
-
-See the [Examples](/examples/README.md) page for advanced examples on how to use the library.
+See the [Examples](/examples/README.md) page for basic and advanced examples on how to use the library and all the features it supports.
 
 ## Internal architecture
 Check the [Architecture](./ARCHITECTURE.md) doc for getting a better understanding of how the library works under the hood.
@@ -216,14 +195,14 @@ Built thanks to the following open-source projects:
 - [tex2typst](https://github.com/qwinsi/tex2typst) - Typst conversion for LaTeX equations
 - [js-yaml](https://github.com/nodeca/js-yaml) - YAML parser
 
-This code is mainly based on the code by zhaoyiqun (@cosformula on GitHub), more specifically in his [markdownToTypst.ts](https://github.com/cosformula/mdxport/blob/main/src/lib/pipeline/markdownToTypst.ts) custom conversion library (renderer to Typst code) built for his open source project [MDXport](https://mdxport.com).
+This code was initially based on the code by zhaoyiqun (@cosformula on GitHub), more specifically in his [markdownToTypst.ts](https://github.com/cosformula/mdxport/blob/main/src/lib/pipeline/markdownToTypst.ts) custom conversion library (renderer to Typst code) built for his open source project [MDXport](https://mdxport.com).
 
 ## Roadmap
 
 - [X] Finish an initial working version
 - [X] Add frontmatter support and also allow to pass the keys as custom options of the main function
-- [ ] Publish to npm
-- [ ] Add a comprehensive test suite
+- [X] Publish to npm
+- [X] Add a comprehensive test suite
 - [ ] Add CLI tool
 - [ ] Support custom templates
 - [ ] Support more Markdown extensions/flavors/specs
