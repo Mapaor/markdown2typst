@@ -212,6 +212,7 @@ Built thanks to the following open-source projects:
   - [remark-parse](https://github.com/remarkjs/remark/tree/main)
 - [esbuild](https://esbuild.github.io/) - Fast bundler
 - [tex2typst](https://github.com/qwinsi/tex2typst) - Typst conversion for LaTeX equations
+- [js-yaml](https://github.com/nodeca/js-yaml) - YAML parser
 
 This code is mainly based on the code by zhaoyiqun (@cosformula on GitHub), more specifically in his [markdownToTypst.ts](https://github.com/cosformula/mdxport/blob/main/src/lib/pipeline/markdownToTypst.ts) custom conversion library (renderer to Typst code) built for his open source project [MDXport](https://mdxport.com).
 
