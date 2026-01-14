@@ -2,8 +2,8 @@
 
 A JavaScript library for converting Markdown to [Typst](https://typst.app/) code.
 
-## Try it online
-See an example use case in this demo website: [https://Mapaor.github.io/markdown2typst](https://Mapaor.github.io/markdown2typst).
+## Demo - Try it online
+See as an example use case the [demo](./demo/) of this repository published as a static website: [https://Mapaor.github.io/markdown2typst](https://Mapaor.github.io/markdown2typst).
 
 ## Supported Markdown features
 ### GitHub Flavored Markdown (GFM)
