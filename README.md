@@ -107,30 +107,20 @@ Install it:
 npm install tex2typst
 ```
 
-### JS Bundle -- PENDING!!!
+### JS Bundle
 
 Available both on JSDeliver and Unpkg.
 
 #### JSDelivr
 
-##### JSDelivr NPM 
-
 ```
-<script src="https://cdn.jsdelivr.net/npm/..."></script>
+<script src="https://cdn.jsdelivr.net/npm/markdown2typst@latest/dist/markdown2typst.min.js"></script>
 ```
 
-##### JSDelivr GitHub Link
+#### Unpkg
 
 ```
-<script src="https://cdn.jsdelivr.net/gh/..."></script>
-```
-
-The link points to the `markdown2typst.min.js` file of this repository (inside the `dist` folder).
-
-#### Unpkg (NPM link)
-
-```
-<script src="https://unpkg.com/..."></script>
+<script src="https://unpkg.com/markdown2typst@latest/dist/markdown2typst.min.js"></script>
 ```
 
 ### Build from source
