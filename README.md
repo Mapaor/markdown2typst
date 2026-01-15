@@ -105,7 +105,7 @@ Package link:
 Install it:
 
 ```bash
-npm install tex2typst
+npm install markdown2typst
 ```
 
 ### JS Bundle
