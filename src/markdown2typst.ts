@@ -16,6 +16,7 @@ import { parseMarkdown } from './parser.js';
 import { collectDefinitions, collectFootnotes, findLeadingH1 } from './collectors.js';
 import { parseFrontmatter, mergeMetadata } from './frontmatter.js';
 import { buildOutput } from './output-builder.js';
+import { renderBlock } from './block-renderer.js';
 
 // Re-export types for public API
 export type { Markdown2TypstOptions, ConversionError, ErrorCallback } from './types.js';
@@ -76,7 +77,8 @@ export function markdown2typst(markdown: string, options: Markdown2TypstOptions 
 			definitions,
 			footnoteDefinitions,
 			onError: options.onError,
-			warnings: { externalImages: false }
+			warnings: { externalImages: false },
+			renderBlock
 		};
 		return buildOutput(tree, metadata, leadingH1?.index ?? null, context);
 	} catch (error) {
