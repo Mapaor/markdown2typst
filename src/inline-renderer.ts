@@ -83,12 +83,11 @@ function renderInline(
 			}
 			// Render footnote content inline
 			try {
+				if (!context.renderBlock) {
+					throw new Error('renderBlock not available in context');
+				}
 				const content = def.children
-					.map((child) => {
-						// Import renderBlock only when needed to avoid circular dependencies
-						const { renderBlock } = require('./block-renderer.js');
-						return renderBlock(child, 0, context);
-					})
+					.map((child) => context.renderBlock!(child, 0, context))
 					.filter(isNonEmpty)
 					.join(' '); // Join blocks with space for inline footnote
 				return `#footnote[${content.trim()}]`;

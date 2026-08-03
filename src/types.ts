@@ -145,6 +145,15 @@ export type ConversionWarnings = {
 };
 
 /**
+ * Block renderer function type for dependency injection
+ */
+export type BlockRenderer = (
+	node: import('mdast').Content,
+	indentLevel: number,
+	context: RenderContext
+) => string | null;
+
+/**
  * Context for rendering nodes
  */
 export type RenderContext = {
@@ -153,4 +162,6 @@ export type RenderContext = {
 	onError?: ErrorCallback;
 	/** Track conversion warnings for generating helper functions */
 	warnings: ConversionWarnings;
+	/** Block renderer function (injected to avoid circular imports) */
+	renderBlock?: BlockRenderer;
 };
