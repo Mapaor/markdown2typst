@@ -1,5 +1,5 @@
 // Import markdown2typst from CDN
-import markdown2typst from 'https://cdn.jsdelivr.net/npm/markdown2typst@0.1.5/dist/markdown2typst.min.js';
+import markdown2typst from 'https://cdn.jsdelivr.net/npm/markdown2typst@0.1.6/dist/markdown2typst.min.js';
 
 // Get the input and output textarea elements of the DOM
 const markdownInput = document.getElementById('markdown-input');
