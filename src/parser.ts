@@ -28,6 +28,12 @@ import { ErrorSeverity } from './types.js';
  */
 export function parseMarkdown(markdown: string, onError?: ErrorCallback): Root {
 	try {
+		// remark-math requires a blank line before display math. Accept a
+		// standalone $$ block immediately after a paragraph as well.
+		const normalizedMarkdown = markdown.replace(
+			/([^\n])\n(\$\$)/g,
+			'$1\n\n$2'
+		);
 		const processor = unified()
 			.use(remarkParse)
 			.use(remarkFrontmatter, ['yaml'])
@@ -35,7 +41,7 @@ export function parseMarkdown(markdown: string, onError?: ErrorCallback): Root {
 			.use(remarkMath)
 			.use(remarkFixAdjacentMath);
 
-		const parsedTree = processor.parse(markdown);
+		const parsedTree = processor.parse(normalizedMarkdown);
 		const tree = processor.runSync(parsedTree) as Root;
 		
 		return tree;

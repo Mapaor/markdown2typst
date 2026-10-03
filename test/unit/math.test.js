@@ -26,6 +26,13 @@ describe('Math', () => {
   });
 
   describe('Block Math', () => {
+    it('should parse display math immediately after a paragraph', () => {
+      assertIncludes(
+        'Paragraph:\n$$x = \\frac{a}{b}$$',
+        ['$', 'x = a/b']
+      );
+    });
+
     it('should convert block math', () => {
       assertIncludes(
         '$$\n\\int_0^1 x^2 dx\n$$',
