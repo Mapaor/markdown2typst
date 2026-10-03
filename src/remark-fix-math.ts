@@ -1,6 +1,8 @@
 import { visit } from 'unist-util-visit';
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
+import remarkMath from 'remark-math';
+import remarkGfm from 'remark-gfm';
 
 /**
  * Remark plugin to fix math blocks that swallowed adjacent text because 
@@ -35,13 +37,20 @@ export function remarkFixAdjacentMath() {
 				
 				// We need to append the remainder as new parsed markdown nodes after this node
 				if (remainder.trim().length > 0) {
-					// Parse the remainder
-					const processor = unified().use(remarkParse);
+					// Parse the remainder with full features
+					const processor = unified()
+						.use(remarkParse)
+						.use(remarkGfm, { singleTilde: false })
+						.use(remarkMath)
+						// Notice we also recursively apply this plugin in case the remainder has more adjacent math
+						.use(remarkFixAdjacentMath);
+					
 					const remainderAst = processor.parse(remainder.trim());
+					const remainderTree = processor.runSync(remainderAst);
 					
 					// Store the nodes to be inserted
 					node.data = node.data || {};
-					node.data.insertAfter = remainderAst.children;
+					node.data.insertAfter = (remainderTree as any).children;
 				}
 			} else {
 				node.value = value.trim();
