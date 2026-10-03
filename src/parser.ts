@@ -8,6 +8,7 @@ import remarkFrontmatter from 'remark-frontmatter';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import remarkParse from 'remark-parse';
+import { remarkFixAdjacentMath } from './remark-fix-math.js';
 import type { Root } from 'mdast';
 import type { ErrorCallback } from './types.js';
 import { ErrorSeverity } from './types.js';
@@ -31,7 +32,8 @@ export function parseMarkdown(markdown: string, onError?: ErrorCallback): Root {
 			.use(remarkParse)
 			.use(remarkFrontmatter, ['yaml'])
 			.use(remarkGfm, { singleTilde: false })
-			.use(remarkMath);
+			.use(remarkMath)
+			.use(remarkFixAdjacentMath);
 
 		const parsedTree = processor.parse(markdown);
 		const tree = processor.runSync(parsedTree) as Root;

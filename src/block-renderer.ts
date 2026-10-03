@@ -97,22 +97,8 @@ export function renderBlock(
  * @returns Rendered Typst math block
  */
 function renderMathBlock(node: MathNode, indentLevel: number, context: RenderContext): string {
-	// Reconstruct the full LaTeX string.
-	// If a LaTeX environment is adjacent to $$, remark-math treats the adjacent text as `meta`,
-	// and may absorb the trailing $$ into `value` if it's on the same line as the environment closure.
-	let rawLatex = node.value || '';
-	const meta = (node as any).meta;
-	if (meta) {
-		rawLatex = meta + (rawLatex ? '\n' + rawLatex : '');
-	}
-
-	// Check if the closing $$ was absorbed into the value
-	if (rawLatex.endsWith('$$')) {
-		rawLatex = rawLatex.slice(0, -2);
-	}
-
 	// Convert LaTeX to Typst math syntax
-	const value = rawLatex.trim();
+	const value = node.value.trim();
 	try {
 		const typstMath = tex2typst(value);
 		return indentLines(`$ ${typstMath} $`, indentLevel);
