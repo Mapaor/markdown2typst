@@ -4,6 +4,33 @@ import markdown2typst from "https://cdn.jsdelivr.net/npm/markdown2typst@latest/d
 // Get the input and output textarea elements of the DOM
 const markdownInput = document.getElementById("markdown-input");
 const typstOutput = document.getElementById("typst-output");
+const packageVersion = document.getElementById("package-version");
+
+async function displayLatestVersion() {
+  try {
+    const response = await fetch(
+      "https://registry.npmjs.org/markdown2typst/latest",
+    );
+
+    if (!response.ok) {
+      throw new Error(`npm registry returned ${response.status}`);
+    }
+
+    const packageData = await response.json();
+
+    if (typeof packageData.version !== "string") {
+      throw new Error("npm registry response did not include a valid version");
+    }
+
+    packageVersion.textContent = `(v${packageData.version})`;
+    document.title = `Markdown to Typst Demo (v${packageData.version})`;
+  } catch (error) {
+    packageVersion.textContent = "(version unavailable)";
+    console.error("Failed to fetch the latest package version:", error);
+  }
+}
+
+displayLatestVersion();
 
 // Function to convert markdown to typst (library wrapper with error handling)
 function convertMarkdownToTypst() {
