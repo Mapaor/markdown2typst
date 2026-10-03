@@ -37,3 +37,6 @@ coverage/
 
 # OS
 Thumbs.db
+
+# Example md files to test
+example-compu.md
