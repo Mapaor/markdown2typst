@@ -1,10 +1,8 @@
-// Import markdown2typst from CDN
-import markdown2typst from "https://cdn.jsdelivr.net/npm/markdown2typst@latest/dist/markdown2typst.min.js";
-
 // Get the input and output textarea elements of the DOM
 const markdownInput = document.getElementById("markdown-input");
 const typstOutput = document.getElementById("typst-output");
 const packageVersion = document.getElementById("package-version");
+let markdown2typst;
 
 async function displayLatestVersion() {
   try {
@@ -24,6 +22,19 @@ async function displayLatestVersion() {
 
     packageVersion.textContent = `(v${packageData.version})`;
     document.title = `Markdown to Typst Demo (v${packageData.version})`;
+
+    const packageModule = await import(
+      `https://cdn.jsdelivr.net/npm/markdown2typst@${encodeURIComponent(
+        packageData.version,
+      )}/dist/markdown2typst.min.js`
+    );
+    if (typeof packageModule.default !== "function") {
+      throw new Error("npm package did not expose a converter function");
+    }
+
+    markdown2typst = packageModule.default;
+    markdownInput.addEventListener("input", convertMarkdownToTypst);
+    convertMarkdownToTypst();
   } catch (error) {
     packageVersion.textContent = "(version unavailable)";
     console.error("Failed to fetch the latest package version:", error);
@@ -45,9 +56,6 @@ function convertMarkdownToTypst() {
     console.error("Conversion error:", error);
   }
 }
-
-// Add event listener for real-time conversion
-markdownInput.addEventListener("input", convertMarkdownToTypst);
 
 const copyIcon =
   '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy-icon lucide-copy"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>';
